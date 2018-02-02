@@ -1,0 +1,24 @@
+version: "2"                                     
+services:                                        
+    web:                                         
+        image: nezarfadle/laravel-php70
+        # restart: always                          
+        volumes:                                 
+            - /path:/var/www/html   
+        ports:                                   
+            - 9090:80                            
+    database:                                    
+        image: mysql
+        # restart: always                          
+        environment:                             
+            - MYSQL_ROOT_PASSWORD=password       
+            - MYSQL_DATABASE=db
+            - MYSQL_USER=user
+            - MYSQL_PASSWORD=password
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        # restart: always                          
+        ports:
+            - 2020:80
+        environment:
+            - PMA_HOST=database
